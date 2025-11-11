@@ -1,6 +1,11 @@
-
+router = require("express").Router()
+const authCtrl = require("../controllers/auth")
 
 router.get("/sign-in", authCtrl.auth_signin_get)
 router.post("/sign-in", authCtrl.auth_signin_post)
-router.get('/sign-out', authCtrl.auth_signout_get)
+router.get("/sign-out", authCtrl.auth_signout_get)
 
+// router.get('../views/auth/sign-up.ejs', authCtrl.auth_signup_get)
+// router.post('../views/auth/sign-up.ejs', authCtrl.auth_signup_post)
+
+module.exports = router
