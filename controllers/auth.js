@@ -1,5 +1,5 @@
 const User = require("../models/user")
-const bcrypt = require("bcrypt")
+const bcrypt = require('bcrypt')
 
 const auth_signup_get = async (req,res) => {
   res.render("auth/sign-up.ejs")
