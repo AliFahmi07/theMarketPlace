@@ -20,6 +20,14 @@ app.use(express.urlencoded());
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
+// Require Route
+const authRouter = require('./routes/auth')
+
+// Use Route
+app.use("/auth", authRouter)
+
+
+
 
 app.listen(port, () => {
   console.log(`listen on ${port}`)
