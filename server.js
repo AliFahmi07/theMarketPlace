@@ -24,4 +24,3 @@ app.use(morgan('dev'));
 app.listen(port, () => {
   console.log(`listen on ${port}`)
 })
-
