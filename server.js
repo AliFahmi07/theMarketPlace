@@ -15,6 +15,7 @@ const methodOverride = require("method-override")
 const morgan = require("morgan")
 const session = require("express-session")
 const signedIn = require('./middleware/is-signed-in')
+const passUserToView = require('./middleware/pass-user-to-view')
 
 // Run Middlewares
 app.use(express.urlencoded());
@@ -28,6 +29,8 @@ app.use(
     saveUninitialized: true,
   })
 )
+
+app.use(passUserToView)
 
 // Route Route
 app.get("/", async (req, res) => {
