@@ -29,6 +29,18 @@ app.use(
   })
 )
 
+// Route Route
+app.get("/", async (req, res) => {
+  user = req.session.user
+  if (user) {
+    username = req.session.user.username
+  } else {
+    username = "Guest"
+  }
+  res.render("index.ejs", { username })
+})
+
+
 const authRouter = require("./routes/auth")
 
 
