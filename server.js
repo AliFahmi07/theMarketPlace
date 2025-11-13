@@ -46,9 +46,11 @@ app.get("/", async (req, res) => {
 // Routers
 const authRouter = require("./routes/auth")
 const listingRouter = require("./routes/listing")
+const profileRouter = require("./routes/profile")
 
 app.use('/auth', authRouter)
 app.use("/listings", listingRouter)
+app.use("/profile", profileRouter)
 
 
 app.listen(port, () => {
