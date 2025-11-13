@@ -15,7 +15,7 @@ const listingSchema = new mongoose.Schema(
       enum: [
         "electronics",
         "automotive",
-        "household items",
+        "household",
         "gardening",
         "toys & games",
         "clothing",
@@ -36,7 +36,6 @@ const listingSchema = new mongoose.Schema(
     contact: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true, // need to confirm this if this is needed or we'll hard code it in the ejs
     },
     imageURL: {
       // need to add file upload function too
