@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Edit Your Profile</h1>
+
+    <form action="/profile/edit?_method=PUT" method="POST">
+      <label for="fullName">Full Name:</label>
+      <input type="text" name="fullName" value="<%= user.fullName %>" />
+
+      <br /><br />
+      <label for="contact">Contact:</label>
+      <input type="text" name="contact" value="<%= user.contact %>" />
+
+      <br /><br />
+      <label for="address">Address:</label>
+      <input type="text" name="address" value="<%= user.address %>" />
+      <br /><br />
+
+      <a href="/profile"><button>Back to Profile</button></a>
+    </form>
+  </body>
+</html>
