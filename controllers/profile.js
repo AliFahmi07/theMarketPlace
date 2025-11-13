@@ -2,16 +2,21 @@ const profile = require('../models/user')
 
 
 const profile_get = async (req,res) => {
-  const loggedInUser = req.session.user
+  const loggedInUser = await profile.findById(req.session.user._id)
   res.render('profile/profile.ejs', {user: loggedInUser})
 }
 
-const profile_put = async (req,res) => {
-  const loggedInUser = req.session.user
-  const userId = loggedInUser._id
+const profile_edit_get = async (req,res) => {
+  const loggedInUser = await profile.findById(req.session.user._id)
+  res.render('profile/edit.ejs', {user: loggedInUser})
+}
+
+const profile_edit_put = async (req,res) => {
+  const loggedInUser = await profile.findById(req.session.user._id)
+
 
   const updatedUser = await profile.findByIdAndUpdate(
-    userId,
+    loggedInUser,
     req.body,
     {new: user},
   )
@@ -23,5 +28,6 @@ const profile_put = async (req,res) => {
 
 module.exports = {
   profile_get,
-  profile_put,
+  profile_edit_get,
+  profile_edit_put,
 }

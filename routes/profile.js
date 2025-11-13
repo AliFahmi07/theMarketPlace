@@ -4,5 +4,4 @@ const isSignedIn = require('../middleware/is-signed-in')
 
 
 router.get('/', isSignedIn, profileCtrl.profile_get)
-
 module.exports = router
