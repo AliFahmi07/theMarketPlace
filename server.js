@@ -43,11 +43,12 @@ app.get("/", async (req, res) => {
   res.render("index.ejs", { username })
 })
 
-
+// Routers
 const authRouter = require("./routes/auth")
-
+const listingRouter = require("./routes/listing")
 
 app.use('/auth', authRouter)
+app.use("/listings", listingRouter)
 
 
 app.listen(port, () => {
