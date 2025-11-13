@@ -12,8 +12,20 @@ const listing_new_get = async (req, res) => {
   res.render("listings/new.ejs", { user: loggedInUser })
 }
 
+// const listing_new_post = async (req, res) => {
+//   req.body.user = req.session.user._id
+//   await Listing.findById(req.params.listingId).populate("user")
+//   res.redirect("/listings")
+// }
+
+const listing_new_post = async (req, res) => {
+  req.body.owner = req.session.user._id
+  await Listing.create(req.body)
+  res.redirect("/listings")
+}
 
 module.exports = {
   listing_index_get,
   listing_new_get,
+  listing_new_post,
 }
