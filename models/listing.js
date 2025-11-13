@@ -15,7 +15,7 @@ const listingSchema = new mongoose.Schema(
       enum: [
         "electronics",
         "automotive",
-        "household items",
+        "household",
         "gardening",
         "toys & games",
         "clothing",
