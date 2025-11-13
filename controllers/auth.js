@@ -22,6 +22,7 @@ const auth_signup_post = async (req, res) => {
   req.body.password = hashedPassword
 
   const user = await User.create(req.body)
+  req.session.user = user
   res.send(`Welcome ${user.username}!`)
 }
 
