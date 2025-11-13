@@ -15,10 +15,9 @@ const userSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  // contact: {
-  //   type: String,
-  //   required: true,
-  // },
+  contact: {
+    type: String,
+  },
 })
 
 const User = mongoose.model("User", userSchema)
