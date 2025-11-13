@@ -7,14 +7,36 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
+
     <h1>Create a new Account!</h1>
+
     <form action="/auth/sign-up" method="POST">
+
+
+      <label for="fullName">Full Name:</label>
+      <input type="text" name="fullName" id="fullName" />
+
+      <br /><br />
+      <label for="contact">Contact:</label>
+      <input type="text" name="contact" id="contact" />
+
+      <br /><br />
+      <label for="address">Address:</label>
+      <input type="text" name="address" id="address" />
+      <br /><br />
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" />
+      <br /><br />
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" />
+      <br /><br />
+
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" name="confirmPassword" id="confirmPassword" />
+
+      <br /><br />
+      
+
       <button type="submit">Sign Up</button>
     </form>
   </body>
