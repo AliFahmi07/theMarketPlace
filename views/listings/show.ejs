@@ -2,7 +2,7 @@
   <body>
     <%- include("../partials/_navbar.ejs") %>
     <h1><%= listing.title %></h1>
-    <p>Posted on <%= listing.createdAt.toLocaleString() %> by <%= listing.owner.username %> </p>
+    <p>Posted on <%= listing.createdAt.toLocaleString() %> by <a href = "/feedback/<%= listing._id%>"><%= listing.owner.username %></a> </p>
     <img src="<%= listing.imageURL %>" style="max-width: 500px; border-radius: 8px;"/>
     <p>Description: <%= listing.description %></p>
     <h4>Price: BHD <%= listing.price %></h4>
