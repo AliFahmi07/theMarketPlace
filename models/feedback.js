@@ -18,5 +18,11 @@ const feedbackSchema = new mongoose.Schema({
   comment: {
     type: String,
   },
+},
+{
   timestamps: true,
-})
+},
+)
+
+const Feedback = mongoose.model("Feedback", feedbackSchema)
+module.exports = Feedback
