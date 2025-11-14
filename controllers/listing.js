@@ -1,5 +1,5 @@
 const Listing = require("../models/listing")
-const user = require("../models/user")
+const User = require("../models/user")
 
 
 const listing_index_get = async (req, res) => {
@@ -8,24 +8,26 @@ const listing_index_get = async (req, res) => {
 }
 
 const listing_new_get = async (req, res) => {
-  const loggedInUser = await user.findById(req.session.user._id)
+  const loggedInUser = await User.findById(req.session.user._id)
   res.render("listings/new.ejs", { user: loggedInUser })
 }
 
-// const listing_new_post = async (req, res) => {
-//   req.body.user = req.session.user._id
-//   await Listing.findById(req.params.listingId).populate("user")
-//   res.redirect("/listings")
-// }
-
 const listing_new_post = async (req, res) => {
   req.body.owner = req.session.user._id
+  req.body.contact = req.session.user._id
   await Listing.create(req.body)
   res.redirect("/listings")
+}
+
+const listing_show_get = async (req, res) => {
+  const listing = await Listing.findById(req.params.listingId).populate("owner")
+  .populate("contact")
+  res.render("listings/show.ejs", { listing })
 }
 
 module.exports = {
   listing_index_get,
   listing_new_get,
   listing_new_post,
+  listing_show_get,
 }
