@@ -25,9 +25,15 @@ const listing_show_get = async (req, res) => {
   res.render("listings/show.ejs", { listing })
 }
 
+const listing_edit_get = async (req, res) => {
+  const listing = await Listing.findById(req.params.listingId)
+  res.render("listings/edit.ejs", { listing } )
+}
+
 module.exports = {
   listing_index_get,
   listing_new_get,
   listing_new_post,
   listing_show_get,
+  listing_edit_get,
 }

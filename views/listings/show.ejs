@@ -7,5 +7,10 @@
     <p>Description: <%= listing.description %></p>
     <h4>Price: BHD <%= listing.price %></h4>
     <h4>Contact: <%= listing.contact.contact %></h4>
+    <% if (listing.owner._id.equals(user._id)) { %>
+      <a href="/listings/<%= listing._id %>/edit"><button>Edit Listing</button></a>
+      <% } else { %>
+        
+      <% } %>
   </body>
 </html>
