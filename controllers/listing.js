@@ -31,10 +31,17 @@ const listing_edit_get = async (req, res) => {
   res.render("listings/edit.ejs", { listing, user } )
 }
 
+const listing_edit_put = async (req, res) => {
+  const listing = await Listing.findById(req.params.listingId)
+  await listing.updateOne(req.body)
+  res.redirect(`/listings/${req.params.listingId}`)
+}
+
 module.exports = {
   listing_index_get,
   listing_new_get,
   listing_new_post,
   listing_show_get,
   listing_edit_get,
+  listing_edit_put,
 }
