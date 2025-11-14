@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1><%= owner.username%>'s Profile</h1>
+
+    <p>Full Name: <%= owner.fullName %></p>
+    <br />
+    <p>Contact: <%= owner.contact %></p>
+    <br />
+    <p>Address: <%= owner.address %></p>
+
+
+  </body>
+</html>
