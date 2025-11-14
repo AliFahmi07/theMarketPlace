@@ -1,4 +1,4 @@
-const mongoose = "require"("mongoose")
+const mongoose = require("mongoose")
 
 const feedbackSchema = new mongoose.Schema({
   reviewer: {
@@ -23,3 +23,6 @@ const feedbackSchema = new mongoose.Schema({
   timestamps: true,
 },
 )
+
+const Feedback = mongoose.model("Feedback", feedbackSchema)
+module.exports = Feedback
