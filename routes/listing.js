@@ -8,6 +8,9 @@ router.get("/", listingCtrl.listing_index_get)
 router.get("/new", isSignedIn, listingCtrl.listing_new_get)
 router.post("/", isSignedIn, listingCtrl.listing_new_post)
 router.get("/:listingId", listingCtrl.listing_show_get)
+router.get("/:listingId/edit", isSignedIn, listingCtrl.listing_edit_get)
+router.put("/:listingId", isSignedIn, listingCtrl.listing_edit_put)
+router.delete("/:listingId", isSignedIn, listingCtrl.listing_delete_delete)
 
 // Export
 module.exports = router
