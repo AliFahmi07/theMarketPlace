@@ -7,10 +7,11 @@
     <p>Description: <%= listing.description %></p>
     <h4>Price: BHD <%= listing.price %></h4>
     <h4>Contact: <%= listing.contact.contact %></h4>
-    <% if (listing.owner._id.equals(user._id)) { %>
+    <% if (user && listing.owner && listing.owner._id.equals(user._id)) { %>
+      <!-- because we are allowing non logged in users to access this page, therefore this checks: 1. user exists (someone is logged in) // 2. listing.owner exists (listing has an owner) // 3. user._id matches owner._id (logged in user owns this listing) -->
       <a href="/listings/<%= listing._id %>/edit"><button>Edit Listing</button></a>
-      <% } else { %>
-        
       <% } %>
+      <a href="/listings"><button>Back to Listings</button></a>
+
   </body>
 </html>
