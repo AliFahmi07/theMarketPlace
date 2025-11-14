@@ -18,5 +18,8 @@ const feedbackSchema = new mongoose.Schema({
   comment: {
     type: String,
   },
+},
+{
   timestamps: true,
-})
+},
+)
