@@ -37,6 +37,11 @@ const listing_edit_put = async (req, res) => {
   res.redirect(`/listings/${req.params.listingId}`)
 }
 
+const listing_delete_delete = async (req, res) => {
+  await Listing.findByIdAndDelete(req.params.listingId)
+  res.redirect("/listings")
+}
+
 module.exports = {
   listing_index_get,
   listing_new_get,
@@ -44,4 +49,5 @@ module.exports = {
   listing_show_get,
   listing_edit_get,
   listing_edit_put,
+  listing_delete_delete
 }
