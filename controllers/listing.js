@@ -3,8 +3,10 @@ const User = require("../models/user")
 
 
 const listing_index_get = async (req, res) => {
-  const listings = await Listing.find().populate("owner")
-  res.render("listings/index.ejs", { listings })
+  const category = req.query.category // gets category from query string
+  const filter = category ? { category } : {}; // checks if category has a value, if true, creates an object using that value or else returns an empty object
+  const listings = await Listing.find(filter).populate("owner")
+  res.render("listings/index.ejs", { listings, selectedCategory: category })
 }
 
 const listing_new_get = async (req, res) => {
