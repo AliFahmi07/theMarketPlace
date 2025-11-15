@@ -17,6 +17,8 @@
     <p>Address: <%= owner.address %></p>
 
 
+<% if (user){%>
+
 
 
 <form action="/feedback/<%=listing._id%>" method="POST">
@@ -35,6 +37,39 @@
 
       <button type="submit">Comment</button>
     </form>
+
+<%}%>
+
+<h2>Reviews</h2>
+    <p><%= averageRating.toFixed(1)%>/5 : <%= feedback.length%> reviews</p>
+  </br>
+<%if (feedback.length ===0 ){ %>
+  <p>No review Yet</P>
+<%}else{%>
+  <% feedback.forEach(feedback => { %>
+    <div>
+<p>Comment: <%= feedback.comment %> </p>
+<p>reviewer <%= feedback.reviewer.username %> </p>
+<p>⭐: <%= feedback.rating %> </p>
+<p>Date: <%= feedback.createdAt.toLocaleString()%></p>
+      </div>
+
+  <%})%>
+<%}%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   </body>
