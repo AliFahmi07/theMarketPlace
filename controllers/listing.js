@@ -56,5 +56,5 @@ module.exports = {
   listing_show_get,
   listing_edit_get,
   listing_edit_put,
-  listing_delete_delete
+  listing_delete_delete,
 }
