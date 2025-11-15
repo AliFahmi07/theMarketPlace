@@ -9,6 +9,22 @@
     <%- include("../partials/_navbar.ejs") %>
     <h1>All Listings</h1>
     <p>Total Listings: <%= listings.length %></p>
+
+    <form method="GET" action="/listings">
+      <label for="category">Filter by Category:</label>
+      <select name="category" id="category" onchange="this.form.submit()">
+        <option value="">All</option>
+        <option value="electronics" <% if (selectedCategory === "electronics") {%> selected <%}%>>Electronics</option>
+          <option value="automotive" <% if (selectedCategory === "automotive") {%> selected <%}%>>Automotive</option>
+          <option value="household" <% if (selectedCategory === "household") {%> selected <%}%>>Household Items</option>
+          <option value="gardening" <% if (selectedCategory === "gardening") {%> selected <%}%>>Gardening</option>
+          <option value="toys & games" <% if (selectedCategory === "toys & games") {%> selected <%}%>>Toys & Games</option>
+          <option value="clothing" <% if (selectedCategory === "clothing") {%> selected <%}%>>Clothing</option>
+          <option value="sports & fitness" <% if (selectedCategory === "sports & fitness") {%> selected <%}%>>Sports & Fitness</option>
+          <option value="other" <% if (selectedCategory === "other") {%> selected <%}%>>Other</option>
+      </select>
+    </form>
+
     <style>
   .listing {
     display: flex;
