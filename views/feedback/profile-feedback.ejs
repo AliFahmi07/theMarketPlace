@@ -36,6 +36,21 @@
       <button type="submit">Comment</button>
     </form>
 
+  <% if (feedback.length === 0) { %>
+    <p>No reviews yet.</p>
+  <% } else { %>
+
+    <% feedback.forEach(f => { %>
+      <div>
+        <p>Rating: <%= f.rating %>/5</p>
+        <p>Comment: <%= f.comment %></p>
+        <p>Reviewer: <%= f.reviewer ? f.reviewer.username : "Unknown" %></p>
+        <p>Date: <%= f.createdAt.toDateString() %></p>
+      </div>
+      <hr>
+    <% }) %>
+
+  <% } %>
 
   </body>
 </html>
