@@ -14,14 +14,18 @@
       <label for="category">Filter by Category:</label>
       <select name="category" id="category" onchange="this.form.submit()">
         <option value="">All</option>
+
+        <% if (user) { %>
+        <option value="listingsByUser" <% if (selectedCategory === "listingsByUser") {%> selected <%}%>>View My Listings Only</option>
+        <% } %>
         <option value="electronics" <% if (selectedCategory === "electronics") {%> selected <%}%>>Electronics</option>
-          <option value="automotive" <% if (selectedCategory === "automotive") {%> selected <%}%>>Automotive</option>
-          <option value="household" <% if (selectedCategory === "household") {%> selected <%}%>>Household Items</option>
-          <option value="gardening" <% if (selectedCategory === "gardening") {%> selected <%}%>>Gardening</option>
-          <option value="toys & games" <% if (selectedCategory === "toys & games") {%> selected <%}%>>Toys & Games</option>
-          <option value="clothing" <% if (selectedCategory === "clothing") {%> selected <%}%>>Clothing</option>
-          <option value="sports & fitness" <% if (selectedCategory === "sports & fitness") {%> selected <%}%>>Sports & Fitness</option>
-          <option value="other" <% if (selectedCategory === "other") {%> selected <%}%>>Other</option>
+        <option value="automotive" <% if (selectedCategory === "automotive") {%> selected <%}%>>Automotive</option>
+        <option value="household" <% if (selectedCategory === "household") {%> selected <%}%>>Household Items</option>
+        <option value="gardening" <% if (selectedCategory === "gardening") {%> selected <%}%>>Gardening</option>
+        <option value="toys & games" <% if (selectedCategory === "toys & games") {%> selected <%}%>>Toys & Games</option>
+        <option value="clothing" <% if (selectedCategory === "clothing") {%> selected <%}%>>Clothing</option>
+        <option value="sports & fitness" <% if (selectedCategory === "sports & fitness") {%> selected <%}%>>Sports & Fitness</option>
+        <option value="other" <% if (selectedCategory === "other") {%> selected <%}%>>Other</option>
       </select>
     </form>
 
@@ -49,7 +53,10 @@
   }
 </style>
 
-    <% listings.forEach((listing) => {%>
+<!-- The following "displayListings" checks if "listingsByUser" is selected in filter; if not then shows the normal listings (all listings) -->
+<% const displayListings = selectedCategory === "listingsByUser" ? listingsByUser : listings %>
+
+    <% displayListings.forEach((listing) => {%>
       <li class="listing">
       <a href="/listings/<%= listing._id %>">
         <img src= <%= listing.imageURL %>/>
