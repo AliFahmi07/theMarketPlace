@@ -42,7 +42,7 @@
 
 <h2>Reviews</h2>
     <p><%= averageRating.toFixed(1)%>/5 : <%= feedback.length%> reviews</p>
-  </br>
+  <hr>
 <%if (feedback.length ===0 ){ %>
   <p>No review Yet</P>
 <%}else{%>
@@ -53,7 +53,7 @@
 <p>⭐: <%= feedback.rating %> </p>
 <p>Date: <%= feedback.createdAt.toLocaleString()%></p>
       </div>
-
+<hr>
   <%})%>
 <%}%>
 

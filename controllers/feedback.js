@@ -1,24 +1,31 @@
 const Listing = require("../models/listing")
 const Feedback = require("../models/feedback")
 
-
-const profile_Feedback_get = async (req,res) => {
+const profile_Feedback_get = async (req, res) => {
   const ownerId = req.params.ownerId
 
   const listing = await Listing.findById(ownerId).populate("owner")
   const sellerId = listing.owner._id
-  const feedback = await Feedback.find({seller:sellerId}).populate("reviewer")
+  const feedback = await Feedback.find({ seller: sellerId }).populate(
+    "reviewer"
+  )
   let averageRating = 0
-  if (feedback.length > 0){
-    const total = feedback.reduce((sum,feedback) =>
-      sum + feedback.rating , 0)
-  averageRating = total/feedback.length
+  if (feedback.length > 0) {
+    const total = feedback.reduce((sum, feedback) => sum + feedback.rating, 0)
+    averageRating = total / feedback.length
   }
 
-    res.render("feedback/profile-feedback.ejs", {listing, sellerId,  owner:listing.owner, Listing, feedback, averageRating})
+  res.render("feedback/profile-feedback.ejs", {
+    listing,
+    sellerId,
+    owner: listing.owner,
+    Listing,
+    feedback,
+    averageRating,
+  })
 }
 
-const profile_Feedback_post = async (req,res) => {
+const profile_Feedback_post = async (req, res) => {
   const ownerId = req.params.ownerId
   const listing = await Listing.findById(ownerId).populate("owner")
 
@@ -29,7 +36,14 @@ const profile_Feedback_post = async (req,res) => {
   res.redirect(`/listings/${ownerId}`)
 }
 
+const profile_showFeedback_get = async (req, res) => {
+    const reviewerId = req.session.user._id
+    const reviews = (await Feedback.find({reviewer: reviewerId}).populate("seller"))
+    res.render("feedback/my-feedbacks.ejs", {reviews})
+}
+
 module.exports = {
   profile_Feedback_get,
   profile_Feedback_post,
+  profile_showFeedback_get
 }
