@@ -9,11 +9,13 @@ const profile_Feedback_get = async (req, res) => {
   const feedback = await Feedback.find({ seller: sellerId }).populate(
     "reviewer"
   )
+  const editingId = req.params.id
   let averageRating = 0
   if (feedback.length > 0) {
     const total = feedback.reduce((sum, feedback) => sum + feedback.rating, 0)
     averageRating = total / feedback.length
   }
+
 
   res.render("feedback/profile-feedback.ejs", {
     listing,
@@ -22,6 +24,7 @@ const profile_Feedback_get = async (req, res) => {
     Listing,
     feedback,
     averageRating,
+    editingId,
   })
 }
 
@@ -38,12 +41,51 @@ const profile_Feedback_post = async (req, res) => {
 
 const profile_showFeedback_get = async (req, res) => {
     const reviewerId = req.session.user._id
-    const reviews = (await Feedback.find({reviewer: reviewerId}).populate("seller"))
-    res.render("feedback/my-feedbacks.ejs", {reviews})
+    const reviews = await Feedback.find({reviewer: reviewerId}).populate("reviewer").populate("seller")
+    const editingId = req.params.id
+    res.render("feedback/my-feedbacks.ejs", {reviews, editingId:null})
 }
+
+
+
+const profile_editFeedback_get = async (req, res) => {
+  const reviewerId = req.session.user._id
+  const reviews = await Feedback.find({reviewer: reviewerId}).populate("reviewer").populate("seller")
+  const editingId = req.params.id
+
+  res.render("feedback/my-feedbacks.ejs", {reviews, editingId})
+}
+
+
+
+const profile_editFeedback_put = async (req,res) => {
+  const feedbackId = req.body.feedbackId
+
+  await Feedback.findByIdAndUpdate(
+    feedbackId,
+    req.body,
+    {new: true}
+  )
+
+  res.redirect("/feedback/userFeedback")
+}
+
+
+
+const profile_deleteFeedback_delete = async (req,res) => {
+  const feedbackId = req.params.id
+
+  await Feedback.findByIdAndDelete(feedbackId)
+  res.redirect("/feedback/userFeedback")
+}
+
+
 
 module.exports = {
   profile_Feedback_get,
   profile_Feedback_post,
-  profile_showFeedback_get
+  profile_showFeedback_get,
+  profile_editFeedback_get,
+  profile_editFeedback_put,
+  profile_deleteFeedback_delete,
 }

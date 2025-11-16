@@ -7,11 +7,40 @@
 </head>
 <body>
   <h1>All Your Feedbacks</h1>
-  <% reviews.forEach(reviews => { %>
+  <% reviews.forEach(r => { %>
     <div>
-<p>Comment: <%= reviews.comment %> </p>
-<p>⭐: <%= reviews.rating %> </p>
-<p>Date: <%= reviews.createdAt.toLocaleString()%></p>
+      <% if (editingId && editingId === r._id.toString()) { %>
+
+      <form action="/feedback/userFeedback/edit?_method=PUT" method="POST">
+        <input type="hidden" name="feedbackId" value="<%=r._id%>">
+
+      <label>Comment:</label>
+      <input type="text", name="comment" value="<%=r.comment%>">
+
+      <label>Rating:</label>
+      <input type="number", name="rating" value="<%=r.rating%>">
+
+      <button type="submit">Save</button>
+
+      </form>
+
+      <% } else { %>
+
+
+<p>Seller: <%= r.seller.username ? r.seller.username : 'Unknown' %></p>
+<p>Comment: <%= r.comment %> </p>
+<p>⭐: <%= r.rating %> </p>
+<p>Date: <%= r.createdAt.toLocaleString()%></p>
+
+<a href="/feedback/userFeedback/edit/<%=r._id%>">Edit</a>
+
+        <form action="/feedback/userFeedback/delete/<%= r._id %>?_method=DELETE" method="POST">
+  <button type="submit">Delete</button>
+</form>
+
+
+        <% } %>
+
       </div>
       <hr>
       <%})%>
