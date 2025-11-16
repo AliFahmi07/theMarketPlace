@@ -9,9 +9,12 @@
   <h1>All Your Feedbacks</h1>
   <% reviews.forEach(reviews => { %>
     <div>
+<p>Seller: <%= reviews.seller.username ? reviews.seller.username : 'Unknown' %></p>
 <p>Comment: <%= reviews.comment %> </p>
 <p>⭐: <%= reviews.rating %> </p>
 <p>Date: <%= reviews.createdAt.toLocaleString()%></p>
+      <button type="submit">Comment</button>
+      
       </div>
       <hr>
       <%})%>
