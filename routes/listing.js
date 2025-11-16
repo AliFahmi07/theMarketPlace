@@ -1,7 +1,7 @@
 const router = require("express").Router()
 
 const listingCtrl = require("../controllers/listing")
-const isSignedIn = require('../middleware/is-signed-in')
+const isSignedIn = require("../middleware/is-signed-in")
 
 // Routes
 router.get("/", listingCtrl.listing_index_get)

@@ -16,7 +16,6 @@ const profile_Feedback_get = async (req, res) => {
     averageRating = total / feedback.length
   }
 
-
   res.render("feedback/profile-feedback.ejs", {
     listing,
     sellerId,
@@ -40,46 +39,38 @@ const profile_Feedback_post = async (req, res) => {
 }
 
 const profile_showFeedback_get = async (req, res) => {
-    const reviewerId = req.session.user._id
-    const reviews = await Feedback.find({reviewer: reviewerId}).populate("reviewer").populate("seller")
-    const editingId = req.params.id
-    res.render("feedback/my-feedbacks.ejs", {reviews, editingId:null})
+  const reviewerId = req.session.user._id
+  const reviews = await Feedback.find({ reviewer: reviewerId })
+    .populate("reviewer")
+    .populate("seller")
+  const editingId = req.params.id
+  res.render("feedback/my-feedbacks.ejs", { reviews, editingId: null })
 }
-
-
 
 const profile_editFeedback_get = async (req, res) => {
   const reviewerId = req.session.user._id
-  const reviews = await Feedback.find({reviewer: reviewerId}).populate("reviewer").populate("seller")
+  const reviews = await Feedback.find({ reviewer: reviewerId })
+    .populate("reviewer")
+    .populate("seller")
   const editingId = req.params.id
 
-  res.render("feedback/my-feedbacks.ejs", {reviews, editingId})
+  res.render("feedback/my-feedbacks.ejs", { reviews, editingId })
 }
 
-
-
-const profile_editFeedback_put = async (req,res) => {
+const profile_editFeedback_put = async (req, res) => {
   const feedbackId = req.body.feedbackId
 
-  await Feedback.findByIdAndUpdate(
-    feedbackId,
-    req.body,
-    {new: true}
-  )
+  await Feedback.findByIdAndUpdate(feedbackId, req.body, { new: true })
 
   res.redirect("/feedback/userFeedback")
 }
 
-
-
-const profile_deleteFeedback_delete = async (req,res) => {
+const profile_deleteFeedback_delete = async (req, res) => {
   const feedbackId = req.params.id
 
   await Feedback.findByIdAndDelete(feedbackId)
   res.redirect("/feedback/userFeedback")
 }
-
-
 
 module.exports = {
   profile_Feedback_get,

@@ -1,10 +1,9 @@
 const Listing = require("../models/listing")
 const User = require("../models/user")
 
-
 const listing_index_get = async (req, res) => {
   const category = req.query.category // gets category from query string
-  const filter = category ? { category } : {}; // checks if category has a value, if true, creates an object using that value or else returns an empty object
+  const filter = category ? { category } : {} // checks if category has a value, if true, creates an object using that value or else returns an empty object
   const listings = await Listing.find(filter).populate("owner")
   res.render("listings/index.ejs", { listings, selectedCategory: category })
 }
@@ -22,15 +21,18 @@ const listing_new_post = async (req, res) => {
 }
 
 const listing_show_get = async (req, res) => {
-  const listing = await Listing.findById(req.params.listingId).populate("owner")
-  .populate("contact")
+  const listing = await Listing.findById(req.params.listingId)
+    .populate("owner")
+    .populate("contact")
   res.render("listings/show.ejs", { listing, user: req.session.user })
 }
 
 const listing_edit_get = async (req, res) => {
-  const listing = await Listing.findById(req.params.listingId).populate("contact")
+  const listing = await Listing.findById(req.params.listingId).populate(
+    "contact"
+  )
   const user = await User.findById(req.session.user._id)
-  res.render("listings/edit.ejs", { listing, user } )
+  res.render("listings/edit.ejs", { listing, user })
 }
 
 const listing_edit_put = async (req, res) => {

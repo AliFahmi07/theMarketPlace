@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>All Your Feedbacks</h1>
-  <% reviews.forEach(r => { %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All Your Feedbacks</h1>
+    <% reviews.forEach(r => { %>
     <div>
       <% if (editingId && editingId === r._id.toString()) { %>
 
       <form action="/feedback/userFeedback/edit?_method=PUT" method="POST">
-        <input type="hidden" name="feedbackId" value="<%=r._id%>">
+        <input type="hidden" name="feedbackId" value="<%=r._id%>" />
 
-      <label>Comment:</label>
-      <input type="text", name="comment" value="<%=r.comment%>">
+        <label>Comment:</label>
+        <input type="text" , name="comment" value="<%=r.comment%>" />
 
-      <label>Rating:</label>
-      <input type="number", name="rating" value="<%=r.rating%>">
+        <label>Rating:</label>
+        <input type="number" , name="rating" value="<%=r.rating%>" />
 
-      <button type="submit">Save</button>
-
+        <button type="submit">Save</button>
       </form>
 
       <% } else { %>
 
+      <p>Seller: <%= r.seller.username ? r.seller.username : 'Unknown' %></p>
+      <p>Comment: <%= r.comment %></p>
+      <p>⭐: <%= r.rating %></p>
+      <p>Date: <%= r.createdAt.toLocaleString()%></p>
 
-<p>Seller: <%= r.seller.username ? r.seller.username : 'Unknown' %></p>
-<p>Comment: <%= r.comment %> </p>
-<p>⭐: <%= r.rating %> </p>
-<p>Date: <%= r.createdAt.toLocaleString()%></p>
+      <a href="/feedback/userFeedback/edit/<%=r._id%>">Edit</a>
 
-<a href="/feedback/userFeedback/edit/<%=r._id%>">Edit</a>
-
-        <form action="/feedback/userFeedback/delete/<%= r._id %>?_method=DELETE" method="POST">
-  <button type="submit">Delete</button>
-</form>
-
-
-        <% } %>
-
-      </div>
-      <hr>
-      <%})%>
-
-</body>
+      <% } %>
+    </div>
+    <hr />
+    <%})%>
+  </body>
 </html>
