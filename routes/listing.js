@@ -12,5 +12,9 @@ router.get("/:listingId/edit", isSignedIn, listingCtrl.listing_edit_get)
 router.put("/:listingId", isSignedIn, listingCtrl.listing_edit_put)
 router.delete("/:listingId", isSignedIn, listingCtrl.listing_delete_delete)
 
+router.post("/:listingId/favorited-by/:userId", isSignedIn, listingCtrl.fav_add_post)
+router.delete("/:listingId/favorited-by/:userId", isSignedIn, listingCtrl.fav_remove_delete)
+
+
 // Export
 module.exports = router
