@@ -17,11 +17,11 @@
     <p>This listing is favorited by <%= listing.favoritedBy.length %> users.</p>
     <% if(user && userHasFavorited) { %>
       <form action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>?_method=DELETE" method="POST">
-        <button type="submit">Remove from Favorite</button>
+        <button type="submit">Remove from Favorite 🩶</button>
       </form>
       <% } else if (user) { %>
       <form action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>" method="POST">
-      <button type="submit">Favorite</button>
+      <button type="submit">Add to Favorite ❤️</button>
       </form>
       <% } %>
     </br>
