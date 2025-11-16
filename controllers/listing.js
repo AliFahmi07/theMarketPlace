@@ -27,9 +27,13 @@ const listing_new_post = async (req, res) => {
 }
 
 const listing_show_get = async (req, res) => {
-  const listing = await Listing.findById(req.params.listingId).populate("owner")
+  const listing = await Listing.findById(req.params.listingId)
+  .populate("owner")
   .populate("contact")
-  res.render("listings/show.ejs", { listing, user: req.session.user })
+
+  const userHasFavorited = req.session.user ? listing.favoritedBy.some((user) => user.equals(req.session.user._id)) : false
+
+  res.render("listings/show.ejs", { listing, user: req.session.user, userHasFavorited })
 }
 
 const listing_edit_get = async (req, res) => {
@@ -49,6 +53,22 @@ const listing_delete_delete = async (req, res) => {
   res.redirect("/listings")
 }
 
+// Favorited by user:
+
+const fav_add_post = async (req, res) => {
+  await Listing.findByIdAndUpdate(req.params.listingId, {
+    $push: { favoritedBy: req.params.userId },
+  })
+  res.redirect(`/listings/${req.params.listingId}`)
+}
+
+const fav_remove_delete = async (req, res) => {
+  await Listing.findByIdAndUpdate(req.params.listingId, {
+    $pull: { favoritedBy: req.params.userId }
+  })
+  res.redirect(`/listings/${req.params.listingId}`)
+}
+
 module.exports = {
   listing_index_get,
   listing_new_get,
@@ -57,4 +77,6 @@ module.exports = {
   listing_edit_get,
   listing_edit_put,
   listing_delete_delete,
+  fav_add_post,
+  fav_remove_delete,
 }
