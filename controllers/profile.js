@@ -1,11 +1,5 @@
 const profile = require('../models/user')
-<<<<<<< HEAD
-const multer = require('multer')
-const storage = multer.memoryStorage()
-const upload = multer({storage})
-=======
 const Listing = require("../models/listing")
->>>>>>> 8342849b1ca98dc045493a5b4386bfb279a90b0f
 
 const profile_get = async (req,res) => {
   const loggedInUser = await profile.findById(req.session.user._id)

@@ -23,9 +23,12 @@ const isSignedIn = require('./middleware/is-signed-in')
 const passUserToView = require('./middleware/pass-user-to-view')
 
 // Run Middlewares
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
+
+a
+
 
 app.use(
   session({
