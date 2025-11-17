@@ -17,6 +17,13 @@
     <p>Address: <%= user.address %></p>
     <br />
 
+<% if (user.avatar){%>
+  <img src="data:image/*;base64,<%= user.avatar%>" width="120" >
+
+<%}%>
+
+
+
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
   </body>
