@@ -27,7 +27,12 @@
     </br>
 
 
-    <img src="<%= listing.imageURL %>" style="max-width: 500px; border-radius: 8px;"/>
+  <% if (listing.image && listing.image.data) { %>
+  <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>"
+       alt="Profile Picture"
+       style="width:150px;height:auto;border-radius:10px;">
+<% } %>
+
     <p>Description: <%= listing.description %></p>
     <h4>Price: BHD <%= listing.price %></h4>
     <h4>Contact: <%= listing.contact.contact %></h4>
