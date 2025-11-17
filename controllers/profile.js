@@ -1,9 +1,11 @@
 const profile = require('../models/user')
-
+const Listing = require("../models/listing")
 
 const profile_get = async (req,res) => {
   const loggedInUser = await profile.findById(req.session.user._id)
-  res.render('profile/profile.ejs', {user: loggedInUser})
+  const favoritedListings = await Listing.find({favoritedBy: req.session.user._id}) // finding all the listings where logged-in user's id is in the favoritedBy array
+  .populate("owner") // getting all the owner details
+  res.render('profile/profile.ejs', {user: loggedInUser, favoritedListings: favoritedListings})
 }
 
 const profile_edit_get = async (req,res) => {

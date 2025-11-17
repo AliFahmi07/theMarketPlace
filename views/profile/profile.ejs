@@ -19,5 +19,16 @@
 
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
+    <br />
+    <br />
+
+<!-- Showing logged-in user's favorited listings in their profile -->
+
+    <h1>My Favorited Listings (<%= favoritedListings.length %>)</h1>
+    <% favoritedListings.forEach(listing => { %>
+      <img style="max-height: 50px;" src= <%= listing.imageURL %>/>
+      <a href="/listings/<%= listing._id %>">
+      <p><%= listing.title %> | Price: BHD<%= listing.price %> | Posted by: <%= listing.owner.username %></p></a>
+    <% }) %>
   </body>
 </html>
