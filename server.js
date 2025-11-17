@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
+const path = require('path')
 
 // Database Connection
 const mongoose = require("./config/db");
@@ -21,6 +22,9 @@ const passUserToView = require('./middleware/pass-user-to-view')
 app.use(express.urlencoded());
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
+
+app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use(
   session({
@@ -58,3 +62,5 @@ app.use("/feedback", feedbackRouter)
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
+
+

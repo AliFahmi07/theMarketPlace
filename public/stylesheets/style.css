@@ -1,0 +1,118 @@
+/* Reset and basic styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f9; /* light background for marketplace feel */
+
+  /* Use grid to layout navbar and content */
+  display: grid;
+  grid-template-rows: auto 1fr; /* navbar height + rest */
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 0 0 6px 6px; /* only round bottom corners */
+  margin-bottom: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between links */
+  flex-wrap: wrap;
+
+  /* Fix navbar at the top */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Container for the form and content */
+.container {
+  width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+  /* Align container to top-left below navbar */
+  justify-self: start; /* aligns container to left in the grid */
+  margin: 20px 40px 0 40px; /* top and horizontal margins */
+  align-self: start; /* aligns container to top in the grid */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px;
+  background-color: #35B729;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #28a623;
+}
+
+/* Optional small text link style */
+p {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+a {
+  color: #35B729;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
