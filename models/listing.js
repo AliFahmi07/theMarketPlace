@@ -37,10 +37,9 @@ const listingSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    imageURL: {
-      // need to add file upload function too
-      type: String,
-      required: true,
+    image: {
+    data: Buffer,
+    contentType: String,
     },
     favoritedBy: [
       {
