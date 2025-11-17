@@ -7,7 +7,7 @@ const listing_index_get = async (req, res) => {
   const filter = category ? { category } : {}; // checks if category has a value, if true, creates an object using that value or else returns an empty object
   const listings = await Listing.find(filter).populate("owner")
 
-  let listingsByUser = [] // star with an empty array first, populate if user is logged in
+  let listingsByUser = [] // start with an empty array first, populate if user is logged in
     if (req.session.user) {
       listingsByUser = await Listing.find({owner: req.session.user._id}).populate("owner")
     }

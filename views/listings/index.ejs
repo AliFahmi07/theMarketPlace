@@ -8,7 +8,7 @@
   <body>
     <%- include("../partials/_navbar.ejs") %>
     <h1>All Listings</h1>
-    <p>Total Listings: <%= listings.length %></p>
+    <p>Total Listings: <% let totalListings = selectedCategory === "listingsByUser" ? listingsByUser.length : listings.length %> <%= totalListings %>
 
     <form method="GET" action="/listings">
       <label for="category">Filter by Category:</label>
