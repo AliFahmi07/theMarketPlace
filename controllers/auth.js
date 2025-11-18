@@ -1,5 +1,8 @@
 const User = require("../models/user")
 const bcrypt = require("bcrypt")
+const multer = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({storage})
 
 const auth_signup_get = async (req, res) => {
   res.render("auth/sign-up.ejs")

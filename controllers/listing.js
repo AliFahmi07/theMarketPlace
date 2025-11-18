@@ -7,7 +7,7 @@ const listing_index_get = async (req, res) => {
   const filter = category ? { category } : {}; // checks if category has a value, if true, creates an object using that value or else returns an empty object
   const listings = await Listing.find(filter).populate("owner")
 
-  let listingsByUser = [] // star with an empty array first, populate if user is logged in
+  let listingsByUser = [] // start with an empty array first, populate if user is logged in
     if (req.session.user) {
       listingsByUser = await Listing.find({owner: req.session.user._id}).populate("owner")
     }
@@ -22,6 +22,14 @@ const listing_new_get = async (req, res) => {
 const listing_new_post = async (req, res) => {
   req.body.owner = req.session.user._id
   req.body.contact = req.session.user._id
+console.log(req.file)
+  if (req.file) {
+  req.body.image = {
+    data: req.file.buffer,
+    contentType: req.file.mimetype,
+  }
+}
+
   await Listing.create(req.body)
   res.redirect("/listings")
 }
@@ -44,6 +52,15 @@ const listing_edit_get = async (req, res) => {
 
 const listing_edit_put = async (req, res) => {
   const listing = await Listing.findById(req.params.listingId)
+
+  if (req.file) {
+  listing.image = {
+    data: req.file.buffer,
+    contentType: req.file.mimetype
+  }
+}
+listing.save()
+
   await listing.updateOne(req.body)
   res.redirect(`/listings/${req.params.listingId}`)
 }
