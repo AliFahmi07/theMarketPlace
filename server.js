@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
+const path = require('path')
 
 
 
@@ -26,7 +27,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
-
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.use(
@@ -65,3 +66,5 @@ app.use("/feedback", feedbackRouter)
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
+
+
