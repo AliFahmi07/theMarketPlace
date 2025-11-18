@@ -6,22 +6,28 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Feedback</title>
 </head>
-<body>
-  <h1>All Your Feedbacks</h1>
+<body class="review-page">
+
+  <%- include('../partials/_navbar.ejs') %>
+
+  <h1 class="reviews-title">All Your Feedbacks</h1>
+
+  <div class="reviews-grid">
   <% reviews.forEach(r => { %>
-    <div>
+
+    <div class="review-card">
       <% if (editingId && editingId === r._id.toString()) { %>
 
       <form action="/feedback/userFeedback/edit?_method=PUT" method="POST">
         <input type="hidden" name="feedbackId" value="<%=r._id%>">
 
       <label>Comment:</label>
-      <input type="text", name="comment" value="<%=r.comment%>">
+      <input type="text" name="comment" value="<%=r.comment%>">
 
       <label>Rating:</label>
-      <input type="number", name="rating" value="<%=r.rating%>">
+      <input type="number" name="rating" value="<%=r.rating%>">
 
-      <button type="submit">Save</button>
+      <button class="btn-save" type="submit">Save</button>
 
       </form>
 
@@ -33,18 +39,19 @@
 <p>⭐: <%= r.rating %> </p>
 <p>Date: <%= r.createdAt.toLocaleString()%></p>
 
-<a href="/feedback/userFeedback/edit/<%=r._id%>">Edit</a>
+<a class="btn-edits btn-full" href="/feedback/userFeedback/edit/<%=r._id%>">Edit</a>
 
-        <form action="/feedback/userFeedback/delete/<%= r._id %>?_method=DELETE" method="POST">
-  <button type="submit">Delete</button>
+        <form class="btn-full" action="/feedback/userFeedback/delete/<%= r._id %>?_method=DELETE" method="POST">
+  <button class="btn-delete" type="submit">Delete</button>
 </form>
 
 
         <% } %>
 
       </div>
-      <hr>
-      <%})%>
 
+      <% }) %>
+
+  </div>
 </body>
 </html>

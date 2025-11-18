@@ -8,8 +8,8 @@
 
 
     <p class="listing-meta">
-      Posted on <%= listing.createdAt.toLocaleString() %> by
-    <% if(user && user.username !== listing.owner.username) { %>
+      Posted on <%= listing.createdAt.toLocaleString() %>
+    by <% if(user && user.username !== listing.owner.username) { %>
       <a class="owner-link"
       href = "/feedback/<%= listing._id%>"><%= listing.owner.username %>
     </a>
@@ -25,11 +25,11 @@
     <div class="favorite-action">
     <% if(user && userHasFavorited) { %>
       <form action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>?_method=DELETE" method="POST">
-        <button type="submit">Remove from Favorite 🩶</button>
+        <button type="submit">Remove from Favorite ❤️</button>
       </form>
       <% } else if (user) { %>
       <form action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>" method="POST">
-      <button type="submit">Add to Favorite ❤️</button>
+      <button type="submit">Add to Favorite 🩶</button>
       </form>
       <% } %>
     </br>
@@ -37,9 +37,10 @@
 
 <div class="listing-card">
 <div class="listing-image">
+<% if (listing.image && listing.image.data) { %>
+  <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>"
+<% } %>
 
-    <img src="<%= listing.imageURL %>" alt="<%= listing.title %>/>
-</div>
 
 <div class="listing-details">
     <p>Description: <%= listing.description %></p>
@@ -54,7 +55,7 @@
       <a href="/listings/<%= listing._id %>/edit">
         <button class="edit-btn">Edit Listing</button>
       </a>
-    
+
       <% } %>
 
       <a href="/listings">
