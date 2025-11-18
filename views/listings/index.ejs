@@ -47,7 +47,10 @@
       <div class="all-listings-page-card">
       <!-- <li class="listing"> -->
       <a href="/listings/<%= listing._id %>">
-        <img src= <%= listing.imageURL %>   alt="<%= listing.title %>"/>
+       <% if (listing.image && listing.image.data) { %>
+  <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>"
+  />
+<% } %>
 
         <div class="all-listings-page-info">
           <h3><%= listing.title %></h3>

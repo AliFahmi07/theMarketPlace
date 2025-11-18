@@ -14,8 +14,17 @@
 
 <div class="profile-content">
       <div class="profile-left">
-<!-- add profile pic -->
- <div class ="pic-placeholder">No Image</div>
+<div class ="pic-placeholder">
+  <% if (user.avatar && user.avatar.data) { %>
+  <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
+style="width:150px;height:150px;border-radius:50%;"/>
+
+
+    <% } else { %>
+  <img src="/pics/user_profile.svg">
+<% } %>
+
+      </div>
 
     </div>
 
@@ -32,22 +41,19 @@
     </div>
     </div>
 
-<div class ="profile-button">
 
-    <% if (user.avatar && user.avatar.data) { %>
-  <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
-       alt="Profile Picture"
-       style="width:150px;height:150px;border-radius:50%;">
-<% } %>
 
-    <br />
 
+
+
+
+<div class="profile-button">
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
 
 </div>
 </div>
-</div>
+
 
 
 
