@@ -1,8 +1,8 @@
 <html>
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <body>
+  <body class="new-listing-page">
     <%- include("../partials/_navbar.ejs") %>
-
+<div class="new-listing-container">
     <h1>Add New Listing</h1>
     <p>* indicates mandatory field</p>
     <form method="POST" action="/listings">
@@ -53,5 +53,6 @@
       </h4>
       <button type="submit">Add Listing</button>
     </form>
+    </div>
   </body>
 </html>

@@ -8,8 +8,20 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
+<div class="profile-wrap">
+    <div class="profile-card">
+<div class="profile-username"><%= user.username%>'s Profile</div>
 
-    <h1><%= user.username%>'s Profile</h1>
+<div class="profile-content">
+      <div class="profile-left">
+<!-- add profile pic -->
+ <div class ="pic-placeholder">No Image</div>
+
+    </div>
+
+<div class ="profile-right">
+
+
 
     <p>Full Name: <%= user.fullName %></p>
     <br />
@@ -17,8 +29,19 @@
     <br />
     <p>Address: <%= user.address %></p>
     <br />
+    </div>
+    </div>
+
+<div class ="profile-button">
 
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
+
+</div>
+</div>
+</div>
+
+
+
   </body>
 </html>

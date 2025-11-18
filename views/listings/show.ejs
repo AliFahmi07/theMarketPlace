@@ -2,20 +2,27 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <body>
     <%- include("../partials/_navbar.ejs") %>
-    <h1><%= listing.title %></h1>
-    <p>Posted on <%= listing.createdAt.toLocaleString() %> by
+
+    <main class="listing container">
+    <h1 class="listing-title"><%= listing.title %></h1>
+
+
+    <p class="listing-meta">
+      Posted on <%= listing.createdAt.toLocaleString() %> by
     <% if(user && user.username !== listing.owner.username) { %>
-      <a
+      <a class="owner-link"
       href = "/feedback/<%= listing._id%>"><%= listing.owner.username %>
     </a>
       <%} else {%>
-        <a href="/profile"><%= listing.owner.username %></a>
+        <a class="owner-link" href="/profile"><%= listing.owner.username %></a>
       <%}%>
     </p>
 
     <!-- Favoriting a listing -->
 
-    <p>This listing is favorited by <%= listing.favoritedBy.length %> users.</p>
+    <p class="favorited-count">This listing is favorited by <%= listing.favoritedBy.length %> users.</p>
+
+    <div class="favorite-action">
     <% if(user && userHasFavorited) { %>
       <form action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>?_method=DELETE" method="POST">
         <button type="submit">Remove from Favorite 🩶</button>
@@ -26,20 +33,34 @@
       </form>
       <% } %>
     </br>
+</div>
 
+<div class="listing-card">
+<div class="listing-image">
 
-    <img src="<%= listing.imageURL %>" style="max-width: 500px; border-radius: 8px;"/>
+    <img src="<%= listing.imageURL %>" alt="<%= listing.title %>/>
+</div>
+
+<div class="listing-details">
     <p>Description: <%= listing.description %></p>
     <h4>Price: BHD <%= listing.price %></h4>
     <h4>Contact: <%= listing.contact.contact %></h4>
-
-
-
+</div>
+</div>
+<div class="owner-container">
     <% if (user && listing.owner && listing.owner._id.equals(user._id)) { %>
       <!-- because we are allowing non logged in users to access this page, therefore this checks: 1. user exists (someone is logged in) // 2. listing.owner exists (listing has an owner) // 3. user._id matches owner._id (logged in user owns this listing) -->
-      <a href="/listings/<%= listing._id %>/edit"><button>Edit Listing</button></a>
-      <% } %>
-      <a href="/listings"><button>Back to Listings</button></a>
 
+      <a href="/listings/<%= listing._id %>/edit">
+        <button class="edit-btn">Edit Listing</button>
+      </a>
+    
+      <% } %>
+
+      <a href="/listings">
+        <button class="back-btn">Back to Listings</button>
+      </a>
+      </div>
+</main>
   </body>
 </html>

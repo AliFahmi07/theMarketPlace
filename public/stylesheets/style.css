@@ -1,8 +1,8 @@
 /* Reset and basic styles */
 body {
   font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 5;
+  padding: 15;
   background: #f4f4f9; /* light background for marketplace feel */
 
   /* Use grid to layout navbar and content */
@@ -11,7 +11,25 @@ body {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+
+  animation: fadeIn 0.5s ease-in-out;
+
+
 }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Wrapper for Sign-In page to center form */
+.signin-wrap {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  min-height: calc(100vh - 60px); /* full height minus navbar if any */
+  padding: 20px;
+  background-color: #f4f4f9; /* optional light background */
+}
+
 
 nav {
   background-color: #333;
@@ -115,4 +133,645 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+/* Index page only */
+body.index-page {
+  background-color: #f4f4f9;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  flex-direction: column;  /* stack content vertically */
+}
+
+/* Ensure the container is centered below navbar */
+body.index-page .index-container {
+  text-align: center;
+  flex: 1; /* take available vertical space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center within container */
+  align-items: center;     /* horizontal center */
+  padding: 20px;
+}
+
+body.index-page .index-container h1 {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+body.index-page .index-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+body.index-page .index-container button {
+  padding: 12px 25px;
+  background-color: #35B729;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.index-page .index-container button:hover {
+  background-color: #28a623;
+}
+/* Page-specific body class */
+body.new-listing-page {
+  background-color: #f4f4f9;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container for the form */
+.new-listing-container {
+  width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading and description */
+.new-listing-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.new-listing-container p {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.new-listing-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-listing-container label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.new-listing-container input,
+.new-listing-container select,
+.new-listing-container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-listing-container textarea {
+  resize: vertical;
+}
+
+/* Submit button */
+.new-listing-container button {
+  padding: 12px 25px;
+  background-color: #35B729;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: center;
+  transition: 0.3s;
+}
+
+.new-listing-container button:hover {
+  background-color: #28a623;
+}
+
+/* Optional: small text for user contact */
+.new-listing-container label[for="contact"] {
+  font-weight: 400;
+  color: #555;
+  margin-top: 10px;
+}
+/* Only target elements inside listing-container */
+.listing-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.listing-container h1.listing-title {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.listing-container .listing-meta {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.listing-container .owner-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.listing-container .owner-link:hover {
+  text-decoration: underline;
+}
+
+.listing-container .favorited-count {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.listing-container .favorite-actions {
+  margin-bottom: 20px;
+}
+
+.listing-container .btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.listing-container .btn:hover {
+  background-color: #0056b3;
+}
+
+.listing-container .favorite-btn {
+  background-color: #ff6b6b;
+}
+
+.listing-container .favorite-btn:hover {
+  background-color: #e03b3b;
+}
+
+.listing-container .edit-btn {
+  background-color: #ffc107;
+}
+
+.listing-container .edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.listing-container .back-btn {
+  background-color: #6c757d;
+}
+
+.listing-container .back-btn:hover {
+  background-color: #5a6268;
+}
+
+.listing-container .listing-image {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.listing-container .listing-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.listing-container .listing-details p {
+  margin-bottom: 12px;
+  font-size: 1em;
+}
+
+.listing-container .owner-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .listing-container {
+    padding: 15px 20px;
+  }
+
+  .listing-container .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .listing-container .owner-actions {
+    flex-direction: column;
+  }
+}
+.listing-card {
+  max-width: 500px;      /* limits card width */
+  margin: 20px auto;     /* centers the card */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.listing-card img {
+  width: 100%;           /* makes image scale with card */
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.listing-card .listing-details p,
+.listing-card .listing-details h4 {
+  margin: 8px 0;
+}
+/* Scoped CSS for the All Listings page */
+.all-listings-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between cards */
+  margin-top: 20px;
+}
+
+.all-listings-page-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 250px; /* card width */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.all-listings-page-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.all-listings-page-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.all-listings-page-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.all-listings-page-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.all-listings-page-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Button styling for this page only */
+.all-listings-page button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.all-listings-page button:hover {
+  background-color: #45a049;
+}
+/* Filter container */
+.category-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;     /* small spacing between label and dropdown */
+  margin: 20px 0;
+  justify-content: flex-start; /* align left */
+}
+
+
+/* Label styling */
+.category-box label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Select dropdown styled to match theme */
+.category-box select {
+  width: 180px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);  /* theme-style shadow */
+}
+
+/* Hover matches your green accent */
+.category-box select:hover {
+  border-color: #35B729;
+}
+
+/* Focus state */
+.category-box select:focus {
+  outline: none;
+  border-color: #35B729;
+  box-shadow: 0 0 6px rgba(53,183,41,0.4);
+}
+/* Body styling - keep navbar normal */
+body.edit-listing-page {
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 40px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Container for form and image */
+.edit-listing-container {
+  width: 450px;
+  margin: 0 auto; /* center horizontally */
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.edit-listing-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Listing image */
+.listing-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Form elements */
+.edit-listing-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-listing-container label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+.edit-listing-container input,
+.edit-listing-container select,
+.edit-listing-container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-listing-container textarea {
+  resize: vertical;
+}
+
+/* Update button */
+.edit-listing-container button.update-btn {
+  padding: 12px;
+  background-color: #35B729;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.edit-listing-container button.update-btn:hover {
+  background-color: #28a623;
+}
+
+/* Delete button */
+.edit-listing-container button.delete-btn {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 12px;
+  margin-top: 10px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.edit-listing-container button.delete-btn:hover {
+  background-color: #e03b3b;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .edit-listing-container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+.owner-container {
+  display: flex;
+  justify-content: space-between; /* Edit left, Back right */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.owner-container button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #35B729;
+  color: white;
+  border: none;
+}
+
+.edit-btn:hover {
+  background-color: #28a623;
+}
+
+.back-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.back-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive: stack buttons on small screens */
+@media (max-width: 500px) {
+  .owner-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+/* Wrapper to center only the profile card */
+.profile-wrap {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  min-height: calc(100vh - 60px); /* full viewport minus navbar height if any */
+  background-color: #f5f5f5; /* optional */
+  padding: 20px 0; /* extra padding for mobile */
+}
+
+/* Profile card container */
+.profile-card {
+  max-width: 600px;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(75, 62, 115, 0.2);
+  overflow: hidden;
+  padding: 15px 20px;
+}
+
+/* Username at top, centered */
+.profile-card .profile-username {
+  text-align: center;
+  font-size: 1.6em;
+  color: #4b3e73;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Flex container for image + info */
+.profile-card .profile-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+/* Left side - profile picture */
+.profile-card .profile-left {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(75, 62, 115, 0.1);
+  padding: 5px;
+}
+
+.profile-card .pic-placeholder {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+/* Right side - profile info */
+.profile-card .profile-right {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.profile-card .profile-right p {
+  margin: 4px 0;
+  font-size: 0.95em;
+  color: #555;
+}
+
+/* Buttons */
+.profile-card .profile-button {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.profile-card .profile-button a button {
+  display: inline-block;
+  margin: 4px 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #35B729;
+  color: #fff;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-card .profile-button a button:hover {
+  background-color: #28a623;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-wrapper {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  .profile-card .profile-content {
+    flex-direction: column;
+  }
+  .profile-card .profile-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(75, 62, 115, 0.1);
+    margin-bottom: 10px;
+  }
+  .profile-card .profile-button a button {
+    width: 80%;
+    margin: 5px auto;
+  }
 }
