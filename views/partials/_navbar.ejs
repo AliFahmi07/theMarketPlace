@@ -1,6 +1,6 @@
 <nav>
   <% if (user) { %>
-    <p> Signed in as <%= user.username %> | <a href="/listings/new">Add New Listing</a> | <a href="/profile">Profile</a> | <a href="/auth/sign-out">Sign Out</a> </p>
+    <p> Signed in as <%= user.username %> | <a href="/">Home</a> | <a href="/listings/new">Add New Listing</a> | <a href="/profile">Profile</a> | <a href="/auth/sign-out">Sign Out</a> </p>
   <% } else { %>
     <a href="/">Home</a>
     <a href="/auth/sign-in">Sign In</a>

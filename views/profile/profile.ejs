@@ -34,6 +34,14 @@
 
 <div class ="profile-button">
 
+    <% if (user.avatar && user.avatar.data) { %>
+  <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
+       alt="Profile Picture"
+       style="width:150px;height:150px;border-radius:50%;">
+<% } %>
+
+    <br />
+
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
 

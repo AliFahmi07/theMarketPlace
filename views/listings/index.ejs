@@ -11,7 +11,7 @@
     <%- include("../partials/_navbar.ejs") %>
     <div class="all-listings-page">
     <h1>All Listings</h1>
-    <p>Total Listings: <%= listings.length %></p>
+    <p>Total Listings: <% let totalListings = selectedCategory === "listingsByUser" ? listingsByUser.length : listings.length %> <%= totalListings %>
 
     <form method="GET" action="/listings">
 
