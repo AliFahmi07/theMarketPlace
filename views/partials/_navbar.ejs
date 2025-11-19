@@ -2,7 +2,7 @@
   <% if (user) { %>
     <p>
   <a href="/profile">
-    <% if (user.avatar && user.avatar.data) { %>
+    <% if (user && user.avatar && user.avatar.data) { %>
 <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
 style="height:65px; border-radius:50%; width: 65px; object-fit: cover;"/>
 
