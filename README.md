@@ -34,7 +34,7 @@ Sella was built to make buying and selling items easy and local. We wanted a sim
 ## **Final Product**
 
 **Sign-In Page:**
-![Sign-Inpage](public/pics/Sign-inPage.png)
+![Sign-Inpage](public/pics/Signin.png)
 
 **Home Page:**
 ![Home Page](public/pics/homePage.png)
