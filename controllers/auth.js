@@ -53,7 +53,7 @@ const auth_signin_post = async (req, res) => {
 
 const auth_signout_get = async (req, res) => {
   req.session.destroy()
-  res.redirect("/auth/sign-in")
+  res.redirect("/")
 }
 
 module.exports = {
