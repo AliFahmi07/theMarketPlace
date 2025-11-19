@@ -53,9 +53,16 @@ style="width:150px;height:150px;border-radius:50%;"/>
 
 </div>
 </div>
-
-
-
-
+<div class="favorited-section">
+<h1>My Favorited Listings (<%= favoritedListings.length %>)</h1>
+<div class="favorited-container">
+    <% favoritedListings.forEach(listing => { %>
+      <a href='/listings/<%= listing._id %>' class="favourite-card">
+        <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>" />
+      <p><%= listing.title %> | Price: BHD<%= listing.price %> | Posted by: <%= listing.owner.username %></p>
+    </a>
+    <% }) %>
+</div>
+</div>
   </body>
 </html>
