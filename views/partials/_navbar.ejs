@@ -1,25 +1,30 @@
 <nav>
+  <div class="nav-left">
+    <a href="/"><img src="/pics/LOGO_SELLA_white.png" class="logo"/></a>
   <% if (user) { %>
-    <p>
   <a href="/profile">
     <% if (user && user.avatar && user.avatar.data) { %>
 <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
-style="height:65px; border-radius:50%; width: 65px; object-fit: cover;"/>
+ class="avatar"/>
 
 
 <% } else { %>
 
-  <img style="height:65px; border-radius:50%; width: 65px;" src="/pics/user_profile.svg">
+  <img src="/pics/user_profile.svg" class="avatar" />
 <% } %>
 </a>
-</p>
-<a href="/"><img style="max-height: 40px ;" src="/pics/LOGO_SELLA_white.png" ></a> |<a href="/auth/sign-out">Sign Out</a> |<a href="/listings/new">Add New Listing</a> | <a href="/listings">View All Listings</a>
+<% } %>
+</div>
+
+<div class="nav-right">
+  <% if (user) { %>
+ <a href="/listings/new">Add New Listing</a> | <a href="/listings">View All Listings</a> | <a href="/auth/sign-out">Sign Out</a>
 
   <% } else { %>
-    <a href="/">Home</a>
     <a href="/auth/sign-in">Sign In</a>
     <a href="/auth/sign-up">Sign Up</a>
 
     <% } %>
+  </div>
 </nav>
 
