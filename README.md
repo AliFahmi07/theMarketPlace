@@ -14,7 +14,7 @@ post/list their items to sell. A hub where every **sella’** finds a **buya’*
 ## **Background**
 Sella was built to make buying and selling items easy and local. We wanted a simple platform where people can list their items, browse what others are selling, and connect directly with sellers.
 ***
-### **Link to the site:** [insert link here]
+### **Link to the site:** [Click Now!!!](https://sella-m9xc.onrender.com/)
 ![Do it](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjFjYjFrM3F1djhhMnpva3I4YWk2ZGk1NDBhMjRlM2MxbTR3NnZhZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/usW6B9Z71qZSldCCAV/giphy.gif)
 ***
 ## **Functionalities**
@@ -33,19 +33,23 @@ Sella was built to make buying and selling items easy and local. We wanted a sim
 ***
 ## **Final Product**
 
+**Sign-In Page:**
+![Sign-Inpage](public/pics/Sign-inPage.png)
 
 **Home Page:**
-[Home Page image]
+![Home Page](public/pics/homePage.png)
 
 **Profile Page:**
-[Insert image]
+![Profile Page](public/pics/profilePage.png)
 
 **Listings Page:**
-[Insert image]
+![Listing Page](public/pics/listingPage.png)
 
 **Rate/Feedback Page:**
-[Insert image]
+![Feedback/RatePage](public/pics//reviewPage.png)
 
+**Your Feedback Page:**
+![myFeedback](public/pics/MyFeedback.png)
 
 ***
 ## **Technologies Used**
