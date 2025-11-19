@@ -3,12 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Profile</title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
+<div class="profile-wrap">
+    <div class="profile-card">
+<div class="profile-username"><%= user.username%>'s Profile</div>
 
-    <h1><%= user.username%>'s Profile</h1>
+<div class="profile-content">
+      <div class="profile-left">
+<div class ="pic-placeholder">
+  <% if (user.avatar && user.avatar.data) { %>
+  <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
+style="width:150px;height:150px;border-radius:50%;"/>
+
+
+    <% } else { %>
+  <img src="/pics/user_profile.svg">
+<% } %>
+
+      </div>
+
+    </div>
+
+<div class ="profile-right">
+
+
 
     <p>Full Name: <%= user.fullName %></p>
     <br />
@@ -16,32 +38,24 @@
     <br />
     <p>Address: <%= user.address %></p>
     <br />
+    </div>
+    </div>
 
-    <% if (user.avatar && user.avatar.data) { %>
-  <img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
-       alt="Profile Picture"
-       style="width:150px;height:150px;border-radius:50%;">
-<% } %>
 
-    <br />
 
+
+
+
+
+<div class="profile-button">
     <a href="/profile/edit"><button>Edit Profile</button></a>
     <a href="/feedback/userFeedback"><button>View Your Comments</button></a>
-    <br />
+
+</div>
+</div>
 
 
 
 
-
-
-
-<!-- Showing logged-in user's favorited listings in their profile -->
-
-    <h1>My Favorited Listings (<%= favoritedListings.length %>)</h1>
-    <% favoritedListings.forEach(listing => { %>
-      <img style="max-height: 50px;" src= <%= listing.imageURL %>/>
-      <a href="/listings/<%= listing._id %>">
-      <p><%= listing.title %> | Price: BHD<%= listing.price %> | Posted by: <%= listing.owner.username %></p></a>
-    <% }) %>
   </body>
 </html>

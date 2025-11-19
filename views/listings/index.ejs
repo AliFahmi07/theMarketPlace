@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>All Listings</title>
 </head>
   <body>
+
     <%- include("../partials/_navbar.ejs") %>
+    <div class="all-listings-page">
     <h1>All Listings</h1>
     <p>Total Listings: <% let totalListings = selectedCategory === "listingsByUser" ? listingsByUser.length : listings.length %> <%= totalListings %>
 
     <form method="GET" action="/listings">
+
+      <div class="category-box">
       <label for="category">Filter by Category:</label>
       <select name="category" id="category" onchange="this.form.submit()">
         <option value="">All</option>
@@ -27,47 +32,38 @@
         <option value="sports & fitness" <% if (selectedCategory === "sports & fitness") {%> selected <%}%>>Sports & Fitness</option>
         <option value="other" <% if (selectedCategory === "other") {%> selected <%}%>>Other</option>
       </select>
+      </div>
     </form>
 
-    <style>
-  .listing {
-    display: flex;
-    align-items: center;  /* Align items vertically */
-    margin: 10px 0;      /* Space between listings */
-  }
 
-  .listing img {
-    width: auto;         /* Adjust the image size */
-    height: 100px;        /* Maintain aspect ratio */
-    margin-right: 10px;  /* Space between image and text */
-    border-radius: 5px;
-  }
-
-  .listing a {
-    text-decoration: none; /* Remove underline from links */
-    color: #333;          /* Change text color */
-  }
-
-  .listing a:hover {
-    color: #007bff;       /* Change color on hover */
-  }
-</style>
 
 <!-- The following "displayListings" checks if "listingsByUser" is selected in filter; if not then shows the normal listings (all listings) -->
 <% const displayListings = selectedCategory === "listingsByUser" ? listingsByUser : listings %>
 
-    <% displayListings.forEach((listing) => {%>
-      <li class="listing">
-      <a href="/listings/<%= listing._id %>">
-          <% if (listing.image && listing.image.data) { %>
-  <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>"
-       alt="Profile Picture"
-       style="width:150px;height:auto;border-radius:10px;">
-<% } %>
-        <%= listing.title %> | Price: BHD<%= listing.price %> | By <%= listing.owner.username %> | Created on <%= listing.createdAt.toLocaleString() %> </a>
-      </li>
-    <%})%>
-    <a href="/listings/new"><button>Add New Listing</button></a>
+<div class="all-listings-page-container">
 
+    <% displayListings.forEach((listing) => {%>
+
+      <div class="all-listings-page-card">
+      <!-- <li class="listing"> -->
+      <a href="/listings/<%= listing._id %>">
+       <% if (listing.image && listing.image.data) { %>
+  <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>"
+  />
+<% } %>
+
+        <div class="all-listings-page-info">
+          <h3><%= listing.title %></h3>
+       <p>Price: BHD<%= listing.price %> </p>
+       <p> By <%= listing.owner.username %> </p>
+       <p> Created on <%= listing.createdAt.toLocaleString() %></p>
+      </div>
+     </a>
+    </div>
+    <%})%>
+</div>
+
+    <a href="/listings/new"><button>Add New Listing</button></a>
+    </div>
   </body>
 </html>

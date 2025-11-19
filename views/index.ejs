@@ -3,30 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Marketplace</title>
   </head>
-  <body>
+  <body class="index-page">
     <%- include("./partials/_navbar.ejs") %>
-
-    <h1>The Marketplace</h1>
-    <p>Your marketplace, your community!</p>
+<div class="index-container">
+  <img style="width:60%; "src="/pics/LOGO_SELLA.png">
+<hr>
+    <p2>Your marketplace, your community!</p2>
+    <hr>
     <a href="/listings"><button>All Listings</button></a>
-
-
-
-    <section>
-      <div class="carousel slide" id="carousel">
-        <div class = "carousel-inner">
-          <div class="carousel-item active">
-            <% listing.forEach((l) => { %>
-              <img src="<% l.image %>">
-              <% }) %>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</div>
   </body>
 </html>
 

@@ -21,7 +21,6 @@ const profile_Feedback_get = async (req, res) => {
     listing,
     sellerId,
     owner: listing.owner,
-    Listing,
     feedback,
     averageRating,
     editingId,

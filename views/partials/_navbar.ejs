@@ -1,6 +1,20 @@
 <nav>
   <% if (user) { %>
-    <p> Signed in as <%= user.username %> | <a href="/"><img src="" alt=""></a> | <a href="/listings/new">Add New Listing</a> | <a href="/profile">Profile</a> | <a href="/auth/sign-out">Sign Out</a> </p>
+    <p>
+  <a href="/profile">
+    <% if (user.avatar && user.avatar.data) { %>
+<img src="data:<%= user.avatar.contentType %>;base64,<%= user.avatar.data.toString('base64') %>"
+style="height:65px; border-radius:50%; width: 65px; object-fit: cover;"/>
+
+
+<% } else { %>
+
+  <img style="height:65px; border-radius:50%; width: 65px;" src="/pics/user_profile.svg">
+<% } %>
+</a>
+</p>
+<a href="/"><img style="max-height: 40px ;" src="/pics/LOGO_SELLA_white.png" ></a> |<a href="/auth/sign-out">Sign Out</a> |<a href="/listings/new">Add New Listing</a> | <a href="/listings">View All Listings</a>
+
   <% } else { %>
     <a href="/">Home</a>
     <a href="/auth/sign-in">Sign In</a>
