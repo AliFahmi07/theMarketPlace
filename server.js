@@ -29,7 +29,6 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -41,6 +40,8 @@ app.use(
 app.use(passUserToView)
 
 // Root Route
+const Listing = require("./models/listing")
+
 app.get("/", async (req, res) => {
   user = req.session.user
   if (user) {
@@ -48,7 +49,10 @@ app.get("/", async (req, res) => {
   } else {
     username = "Guest"
   }
-  res.render("index.ejs", { username })
+
+const listing = await Listing.find().populate("owner")
+
+  res.render("index.ejs", { username, listing})
 })
 
 // Routers
