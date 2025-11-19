@@ -85,6 +85,7 @@ Sella was built to make buying and selling items easy and local. We wanted a sim
 - [Dotenv](https://www.npmjs.com/package/dotenv) – Loads environment variables from a `.env` file.
 - [Nodemon](https://www.npmjs.com/package/nodemon) – For automatically restarting the server during development.
 - GIFs used in the README: [Giphy](https://giphy.com/)
+- CodePen CSS was used for styling purposes: [CodePen](https://codepen.io/)
 ***
 ## Thank You for Visting!
  ![Shukran](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2Iwa2xrYTRsbDl4bmU2aTI0cmswbjd0M2MyejNxaTkyaG5nbWVlZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xdMXeiY2iCfSQ6faTk/giphy.gif)
