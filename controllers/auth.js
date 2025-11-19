@@ -1,5 +1,6 @@
 const User = require("../models/user")
 const bcrypt = require("bcrypt")
+const isSignedIn = require("../middleware/is-signed-in")
 
 const auth_signup_get = async (req, res) => {
   res.render("auth/sign-up.ejs")
@@ -23,7 +24,7 @@ const auth_signup_post = async (req, res) => {
 
   const user = await User.create(req.body)
   req.session.user = user
-  res.send(`Welcome ${user.username}!`)
+  res.redirect("/")
 }
 
 const auth_signin_get = async (req, res) => {
