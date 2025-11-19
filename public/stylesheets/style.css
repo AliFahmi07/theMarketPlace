@@ -45,8 +45,8 @@ nav {
   margin-bottom: 0;
 
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
   flex-wrap: wrap;
 
   position: sticky;
@@ -56,11 +56,30 @@ nav {
   box-sizing: border-box;
 }
 
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.avatar {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo {
+  max-height: 40px;
+}
+
+
 nav a {
   color: #2a9d8f;
   text-decoration: none;
   font-weight: 600;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease, color 0.3s ease;
   white-space: nowrap;
@@ -195,7 +214,6 @@ body.new-listing-page {
   margin: 0;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
@@ -209,6 +227,7 @@ body.new-listing-page {
   text-align: left;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .new-listing-container h1 {
